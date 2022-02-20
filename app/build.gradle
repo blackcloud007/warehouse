@@ -45,4 +45,8 @@ dependencies {
     // Chart and graph library
     implementation 'com.github.blackfizz:eazegraph:1.2.5l@aar'
     implementation 'com.nineoldandroids:library:2.4.0'
+
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+
+    implementation 'com.loopj.android:android-async-http:1.4.11'
 }
