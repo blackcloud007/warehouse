@@ -1,4 +1,4 @@
-package com.example.warehouse1
+package com.example.warehouse1.viewdetails
 
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.warehouse1.R
 
 class Adapter(context: Context?, l: List<Item>, onTabListener: OnTabListener) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     var inflator: LayoutInflater = LayoutInflater.from(context)

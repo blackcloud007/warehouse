@@ -1,26 +1,27 @@
-package com.example.warehouse1
+package com.example.warehouse1.viewdetails
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.warehouse1.R
 import jxl.Sheet
 import jxl.Workbook
 import org.eazegraph.lib.charts.PieChart
 import org.eazegraph.lib.models.PieModel
 import java.io.InputStream
 
-class MainActivity : AppCompatActivity() ,Adapter.OnTabListener {
+class ViewDetails : AppCompatActivity() , Adapter.OnTabListener {
     private lateinit var pieChart: PieChart
     private val list = mutableListOf<Item>()
     private lateinit var rv:RecyclerView
 
-    var adapter:Adapter?=null
+    var adapter: Adapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.view_details)
         pieChart = findViewById(R.id.piechart)
         rv= findViewById(R.id.listOfData)
 
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity() ,Adapter.OnTabListener {
             )
         )
 
-        adapter=Adapter(this,list,this)
+        adapter= Adapter(this,list,this)
         rv.layoutManager= LinearLayoutManager(this)
         rv.adapter=adapter
     }
