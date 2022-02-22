@@ -20,12 +20,16 @@ class Adapter(context: Context?, l: List<Item>, onTabListener: OnTabListener) : 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val name = list[position].name
         holder.name.text = name
-        val good = list[position].g.toString()
-        holder.good.text = good
-        val moderate = list[position].m.toString()
-        holder.moderate.text = moderate
-        val bad = list[position].b.toString()
-        holder.bad.text = bad
+        val s1 = list[position].s1.toString()
+        holder.s1.text = s1
+        val s2 = list[position].s2.toString()
+        holder.s2.text = s2
+        val s3 = list[position].s3.toString()
+        holder.s3.text = s3
+        val s4 = list[position].s4.toString()
+        holder.s4.text = s4
+        val quality = list[position].quality
+        holder.quality.text = quality
     }
 
     override fun getItemCount(): Int {
@@ -35,9 +39,11 @@ class Adapter(context: Context?, l: List<Item>, onTabListener: OnTabListener) : 
     inner class ViewHolder(itemView: View, onTabListener: OnTabListener) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var name: TextView = itemView.findViewById(R.id.tv_name)
-        var good: TextView = itemView.findViewById(R.id.tvG)
-        var moderate:TextView=itemView.findViewById(R.id.tvM)
-        var bad: TextView = itemView.findViewById(R.id.tvB)
+        var s1: TextView = itemView.findViewById(R.id.tv1)
+        var s2:TextView=itemView.findViewById(R.id.tv2)
+        var s3: TextView = itemView.findViewById(R.id.tv3)
+        var s4: TextView = itemView.findViewById(R.id.tv4)
+        var quality: TextView = itemView.findViewById(R.id.tvG)
         var onTabListener: OnTabListener = onTabListener
         override fun onClick(view: View) {
             onTabListener.onClick(adapterPosition)

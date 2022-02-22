@@ -48,38 +48,42 @@ class ViewDetails : AppCompatActivity() , Adapter.OnTabListener {
             val row: Int =s.rows
             for(i in 0 until row){
                     val name =s.getCell(0,i).contents.toString()
-                    val good:Int=s.getCell(1,i).contents.toInt()
-                val moderate:Int=s.getCell(2,i).contents.toInt()
-                val bad:Int=s.getCell(3,i).contents.toInt()
-                list.add(Item(name,good,moderate,bad))
+                    val s1:Int=s.getCell(1,i).contents.toInt()
+                val s2:Int=s.getCell(2,i).contents.toInt()
+                val s3:Int=s.getCell(3,i).contents.toInt()
+                val s4:Int=s.getCell(4,i).contents.toInt()
+                val quality:String=s.getCell(5,i).contents
+                list.add(Item(name,s1,s2,s3,s4,quality))
 
             }
 
         }catch(e:Exception){e.printStackTrace();}
 
     }
-    private fun setData(g:Int, m:Int, b:Int) {
-        findViewById<TextView>(R.id.tvG).text = g.toString()
-        findViewById<TextView>(R.id.tvM).text = m.toString()
-        findViewById<TextView>(R.id.tvB).text = b.toString()
+    private fun setData(s1:Int, s2:Int, s3:Int,s4:Int,quality:String) {
+        findViewById<TextView>(R.id.tv1).text = s1.toString()
+        findViewById<TextView>(R.id.tv2).text = s2.toString()
+        findViewById<TextView>(R.id.tv3).text = s3.toString()
+        findViewById<TextView>(R.id.tv4).text = s4.toString()
+        findViewById<TextView>(R.id.tvG).text = quality
 
         // Set the data and color to the pie chart
        pieChart.clearChart()
         pieChart.addPieSlice(
             PieModel(
-                "Good", findViewById<TextView>(R.id.tvG).text.toString().toInt().toFloat(),
+                "Good", findViewById<TextView>(R.id.tv1).text.toString().toInt().toFloat(),
                 Color.parseColor("#4CAF50")
             )
         )
         pieChart.addPieSlice(
             PieModel(
-                "Moderate",findViewById<TextView>(R.id.tvM).text.toString().toInt().toFloat(),
+                "Moderate",findViewById<TextView>(R.id.tv2).text.toString().toInt().toFloat(),
                 Color.parseColor("#2196F3")
             )
         )
         pieChart.addPieSlice(
             PieModel(
-                "Bad", findViewById<TextView>(R.id.tvB).text.toString().toInt().toFloat(),
+                "Bad", findViewById<TextView>(R.id.tv3).text.toString().toInt().toFloat(),
                 Color.parseColor("#F44336")
             )
         )
@@ -87,6 +91,6 @@ class ViewDetails : AppCompatActivity() , Adapter.OnTabListener {
     }
 
     override fun onClick(position: Int) {
-        setData(list[position].g, list[position].m, list[position].b)
+        setData(list[position].s1, list[position].s2, list[position].s3, list[position].s4, list[position].quality)
     }
 }
