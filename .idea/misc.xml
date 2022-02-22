@@ -13,11 +13,15 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/ic_outline_add_circle_outline_24.xml" value="0.1955" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/profile.xml" value="0.15" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/settings.xml" value="0.1965" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_lot.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_main1.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_node.xml" value="0.16458333333333333" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/card_view.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/custom_layout.xml" value="0.22" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/dashboard_layout.xml" value="0.1" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/lot_card_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/node_card_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/view_details.xml" value="0.25" />
       </map>
     </option>

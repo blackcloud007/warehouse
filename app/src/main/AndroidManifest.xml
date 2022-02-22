@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse1">
         <activity
+            android:name=".viewdetails.RawData.Node"
+            android:exported="false" />
+        <activity
+            android:name=".viewdetails.Node.Lot"
+            android:exported="false" />
+        <activity
             android:name=".dashboard.Dashboard"
             android:exported="true">
             <intent-filter>
@@ -18,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".viewdetails.ViewDetails"/>
+        <activity android:name=".viewdetails.ViewDetails" />
     </application>
 
 </manifest>

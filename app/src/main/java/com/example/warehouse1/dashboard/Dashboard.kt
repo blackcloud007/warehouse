@@ -8,17 +8,16 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
-import com.example.warehouse1.viewdetails.Adapter
 import com.example.warehouse1.viewdetails.ViewDetails
 
 
-class Dashboard : AppCompatActivity(), Adapter.OnTabListener {
-    var myLists: MutableList<MyList>? = null
+class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
+    var myLists: MutableList<DashBoardModel>? = null
     var rv: RecyclerView? = null
-    var adapter: MyAdapter? = null
+    var adapter: DashBoardAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.dashboard_layout)
+        setContentView(R.layout.activity_dashboard)
         rv = findViewById<View>(R.id.rec) as RecyclerView
         rv!!.setHasFixedSize(true)
         rv!!.layoutManager = GridLayoutManager(this, 2)
@@ -27,18 +26,18 @@ class Dashboard : AppCompatActivity(), Adapter.OnTabListener {
     }
 
     private fun getdata() {
-        myLists!!.add(MyList(R.drawable.viewdetails))
-        myLists!!.add(MyList(R.drawable.setting))
-        myLists!!.add(MyList(R.drawable.support))
-        myLists!!.add(MyList(R.drawable.profile))
-        myLists!!.add(MyList(R.drawable.logout))
-        myLists!!.add(MyList(R.drawable.feedback))
-        myLists!!.add(MyList(R.drawable.setting))
-        myLists!!.add(MyList(R.drawable.support))
-        myLists!!.add(MyList(R.drawable.profile))
-        myLists!!.add(MyList(R.drawable.logout))
-        myLists!!.add(MyList(R.drawable.feedback))
-        adapter = MyAdapter(myLists!!, this, onTabListener = this)
+        myLists!!.add(DashBoardModel(R.drawable.viewdetails))
+        myLists!!.add(DashBoardModel(R.drawable.setting))
+        myLists!!.add(DashBoardModel(R.drawable.support))
+        myLists!!.add(DashBoardModel(R.drawable.profile))
+        myLists!!.add(DashBoardModel(R.drawable.logout))
+        myLists!!.add(DashBoardModel(R.drawable.feedback))
+        myLists!!.add(DashBoardModel(R.drawable.setting))
+        myLists!!.add(DashBoardModel(R.drawable.support))
+        myLists!!.add(DashBoardModel(R.drawable.profile))
+        myLists!!.add(DashBoardModel(R.drawable.logout))
+        myLists!!.add(DashBoardModel(R.drawable.feedback))
+        adapter = DashBoardAdapter(myLists!!, this, onTabListener = this)
         rv!!.adapter = adapter
     }
 
