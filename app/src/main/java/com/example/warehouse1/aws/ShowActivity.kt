@@ -37,10 +37,10 @@ class ShowActivity : AppCompatActivity() {
                 val statement = connection.createStatement()
                 val rs:ResultSet = statement.executeQuery("Select * FROM $TABLE_NAME ORDER BY CURRENTDATE DESC,CURRENTTIME DESC LIMIT 100")
                 while (rs.next()){
-                    map[rs.getString(1)]?.add((mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5))))
-                    records.append("NODEID: ").append(1)
-                        .append(",TGS2620 ").append(rs.getString(2)).
-                        append(",TGS2602 ").append(rs.getString(3))
+                    map[rs.getString(1)]?.add((mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "+rs.getString(8))))
+                    records.append("NODEID: ").append(rs.getString(1))
+                        .append(",TGS2620 ").append(rs.getString(2))
+                        .append(",TGS2602 ").append(rs.getString(3))
                         .append(",TGS2600 ").append(rs.getString(4))
                         .append(",TGS822 ").append(rs.getString(5))
                         .append(",CURRENTDATE ").append(rs.getString(6))
@@ -49,7 +49,7 @@ class ShowActivity : AppCompatActivity() {
                         .append("\n")
                 }
                 for (key in map.keys) {
-                    log.d(key,map[key].toString())
+                    log.d("NODEE","\n$key----->"+map[key].toString())
                 }
                 connection.close()
             } catch (e: Exception) {
