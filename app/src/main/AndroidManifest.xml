@@ -13,11 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse1">
         <activity
-            android:name=".aws.ShowActivity"
+            android:name=".login.LoginActivity"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-            android:exported="false"
-            >
-
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
             android:name=".viewdetails.RawData.Node"
@@ -27,14 +29,8 @@
             android:exported="false" />
         <activity
             android:name=".dashboard.Dashboard"
-            android:exported="true"
+            android:exported="false"
            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
         <activity android:name=".viewdetails.ViewDetails" />
     </application>

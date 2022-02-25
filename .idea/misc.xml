@@ -5,7 +5,9 @@
       <map>
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/background.xml" value="0.1965" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/black_lock_24dp.xml" value="0.1965" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/button_background.xml" value="0.2115" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/circle_orange.xml" value="0.1965" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/edit_text_background.xml" value="0.2115" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/gradient.xml" value="0.1965" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.1955" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/ic_email_black_24dp.xml" value="0.1955" />
@@ -14,6 +16,7 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/profile.xml" value="0.15" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/settings.xml" value="0.1965" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_lot.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_main1.xml" value="0.18854166666666666" />

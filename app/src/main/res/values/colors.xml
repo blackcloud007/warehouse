@@ -18,4 +18,6 @@
     <color name="colorText">#FFFFFF</color>
     <color name="colorBackground">#FFFFFF</color>
 
+    <color name="hint_color">#80FFFFFF</color>
+
 </resources>

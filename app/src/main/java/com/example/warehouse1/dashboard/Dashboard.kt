@@ -49,6 +49,10 @@ class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
             R.drawable.setting -> {
                 Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
             }
+            R.drawable.logout -> {
+                Toast.makeText(this,"Logging out!!",Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
 }
