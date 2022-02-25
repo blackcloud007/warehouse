@@ -7,7 +7,11 @@ import com.example.warehouse1.R
 import android.text.method.ScrollingMovementMethod
 import kotlin.Throws
 import com.example.warehouse1.aws.ShowActivity
+import com.example.warehouse1.viewdetails.LotModel
 import com.loopj.android.http.AsyncHttpClient.log
+import jxl.Sheet
+import jxl.Workbook
+import java.io.InputStream
 import java.lang.Exception
 import java.lang.StringBuilder
 import java.sql.DriverManager
@@ -37,7 +41,10 @@ class ShowActivity : AppCompatActivity() {
                 val statement = connection.createStatement()
                 val rs:ResultSet = statement.executeQuery("Select * FROM $TABLE_NAME ORDER BY CURRENTDATE DESC,CURRENTTIME DESC LIMIT 100")
                 while (rs.next()){
-                    map[rs.getString(1)]?.add((mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "+rs.getString(8))))
+                    if(map[rs.getString(1)]==null)
+                    map[rs.getString(1)]= mutableListOf(mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "+rs.getString(8)))
+                    else map[rs.getString(1)]?.add((mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "+rs.getString(8))))
+
                     records.append("NODEID: ").append(rs.getString(1))
                         .append(",TGS2620 ").append(rs.getString(2))
                         .append(",TGS2602 ").append(rs.getString(3))
@@ -51,7 +58,9 @@ class ShowActivity : AppCompatActivity() {
                 for (key in map.keys) {
                     log.d("NODEE","\n$key----->"+map[key].toString())
                 }
+                log.d("MAP SIZE",map.size.toString())
                 connection.close()
+                update(map)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -60,6 +69,11 @@ class ShowActivity : AppCompatActivity() {
         }.start()
 
     }
+
+    private fun update(map: MutableMap<String, MutableList<MutableList<String>>>) {
+
+    }
+
     companion object {
         private const val DATABASE_NAME = "PROJECT"
         const val url =

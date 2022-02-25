@@ -8,9 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
 import com.example.warehouse1.viewdetails.LotModel
 import com.example.warehouse1.viewdetails.RawData.Node
-import jxl.Sheet
-import jxl.Workbook
-import java.io.InputStream
 
 class Lot : AppCompatActivity(), NodeAdapter.OnTabListener {
     val list = mutableListOf<NodeModel>()
@@ -20,13 +17,16 @@ class Lot : AppCompatActivity(), NodeAdapter.OnTabListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lot)
         rv= findViewById(R.id.lotrv)
+
         val t: LotModel = intent.getSerializableExtra("t") as LotModel
-        order(t)
+        map =intent.getSerializableExtra("map") as HashMap<String,MutableList<MutableList<String>>>
+        order(t,map)
+
         adapter= NodeAdapter(this,list,this)
         rv.layoutManager= LinearLayoutManager(this)
         rv.adapter=adapter
     }
-    private fun order(t: LotModel){
+    private fun order(t: LotModel, map: HashMap<String, MutableList<MutableList<String>>>){
         findViewById<TextView>(R.id.tv_nodelot_name).text = t.name
         findViewById<TextView>(R.id.tv_node_avg_Q).text=t.quality
         findViewById<TextView>(R.id.tv_node_avgs1).text=t.s1.toString()
@@ -37,23 +37,35 @@ class Lot : AppCompatActivity(), NodeAdapter.OnTabListener {
             var moderate:Int=0
             var bad:Int=0
             try{
-                val ii: InputStream = assets.open("node.xls")
-                val w : Workbook = Workbook.getWorkbook(ii)
-                val s: Sheet =w.getSheet(0)
-                val row: Int =s.rows
-                for(i in 0 until row){
-                    val name =s.getCell(0,i).contents.toString()
-                    val s1:Int=s.getCell(1,i).contents.toInt()
-                    val s2:Int=s.getCell(2,i).contents.toInt()
-                    val s3:Int=s.getCell(3,i).contents.toInt()
-                    val s4:Int=s.getCell(4,i).contents.toInt()
-                    val quality:String=s.getCell(5,i).contents
-                    list.add(NodeModel(name,s1,s2,s3,s4,quality))
-                    when(s.getCell(5,i).contents){
-                        "Good" -> good += 1
-                        "Moderate" -> moderate += 1
-                        "Bad" -> bad += 1
+                var s1:Int=0
+                var s2:Int=0
+                var s3:Int=0
+                var s4:Int=0
+                var quality:String="NULL"
+                for(i in map.keys){
+                    var t=1
+                    for(j in map[i]!!){
+                        s1+=(j[0].toInt()-s1)/t
+                        s2+=(j[1].toInt()-s2)/t
+                        s3+=(j[2].toInt()-s3)/t
+                        s4+=(j[3].toInt()-s4)/t
+                        t+=1
+                        when (j[4].trim()){
+                            "Good" ->good+=1
+                            "Not Good" ->moderate+=1
+                            "Bad" -> bad+=1
+                        }
                     }
+                    if(good>moderate ){
+                        quality = if(good>bad)
+                            "Good"
+                        else
+                            "Bad"
+                    }
+                    else if(moderate>bad)
+                            quality="Moderate"
+
+                    list.add(NodeModel(i, s1, s2, s3, s4, quality))
                 }
 
             }catch(e:Exception){e.printStackTrace()
@@ -62,8 +74,14 @@ class Lot : AppCompatActivity(), NodeAdapter.OnTabListener {
 
     override fun onClick(position: Int) {
         val intent = Intent(applicationContext, Node::class.java)
-        val tt: NodeModel = NodeModel(list[position].node_num,list[position].s1,list[position].s2,list[position].s3,list[position].s4,list[position].quality)
-        intent.putExtra("tt", tt)
+        val tt: NodeModel = list[position]
+            intent.putExtra("tt", tt)
+        intent.putExtra("map",map)
         startActivity(intent)
     }
+
+companion object {
+    var map: HashMap<String,MutableList<MutableList<String>>> = hashMapOf<String,MutableList<MutableList<String>>>()
+
+}
 }

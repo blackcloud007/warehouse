@@ -14,13 +14,10 @@
         android:theme="@style/Theme.Warehouse1">
         <activity
             android:name=".aws.ShowActivity"
-            android:exported="true"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false"
+            >
+
         </activity>
         <activity
             android:name=".viewdetails.RawData.Node"
@@ -30,7 +27,13 @@
             android:exported="false" />
         <activity
             android:name=".dashboard.Dashboard"
-            android:exported="false" >
+            android:exported="true"
+           >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
         <activity android:name=".viewdetails.ViewDetails" />

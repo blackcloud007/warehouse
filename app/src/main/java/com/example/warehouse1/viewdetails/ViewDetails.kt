@@ -8,11 +8,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
 import com.example.warehouse1.viewdetails.Node.Lot
+import com.loopj.android.http.AsyncHttpClient
 import jxl.Sheet
 import jxl.Workbook
 import org.eazegraph.lib.charts.BarChart
 import org.eazegraph.lib.models.BarModel
 import java.io.InputStream
+import java.lang.StringBuilder
+import java.sql.DriverManager
+import java.sql.ResultSet
+import java.sql.SQLException
 
 class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
     private lateinit var barChart: BarChart
@@ -27,14 +32,57 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
         barChart = findViewById(R.id.barchart)
         rv= findViewById(R.id.listOfData)
 
-        order()
-
+        try {
+            utilFun()
+        } catch (e: SQLException) {
+            e.printStackTrace()
+        }
+        order(map)
         adapter= LotAdapter(this,list,this)
         rv.layoutManager= LinearLayoutManager(this)
         rv.adapter=adapter
     }
+    @Throws(SQLException::class)
+    private fun utilFun() {
+        Thread {
+            val records = StringBuilder()
+            try {
+                Class.forName("com.mysql.jdbc.Driver")
+                val connection = DriverManager.getConnection(
+                    url,
+                    username,
+                    password
+                )
+                val statement = connection.createStatement()
+                val rs: ResultSet = statement.executeQuery("Select * FROM $TABLE_NAME ORDER BY CURRENTDATE DESC,CURRENTTIME DESC LIMIT 100")
+                while (rs.next()){
+                    if(map[rs.getString(1)]==null)
+                        map[rs.getString(1)]= mutableListOf(mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "+rs.getString(8),rs.getString(6),rs.getString(7)))
+                    else map[rs.getString(1)]?.add((mutableListOf<String>(rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5)," "+rs.getString(8),rs.getString(6),rs.getString(7))))
 
-    private fun order(){
+                    records.append("NODEID: ").append(rs.getString(1))
+                        .append(",TGS2620 ").append(rs.getString(2))
+                        .append(",TGS2602 ").append(rs.getString(3))
+                        .append(",TGS2600 ").append(rs.getString(4))
+                        .append(",TGS822 ").append(rs.getString(5))
+                        .append(",CURRENTDATE ").append(rs.getString(6))
+                        .append(",CURRENTTIME ").append(rs.getString(7))
+                        .append(",STATUS ").append(rs.getString(8))
+                        .append("\n")
+                }
+                for (key in map.keys) {
+                    AsyncHttpClient.log.d("NODEE","\n$key----->"+ map[key].toString())
+                }
+                AsyncHttpClient.log.d("MAP SIZE", map.size.toString())
+                connection.close()
+
+            } catch (e: java.lang.Exception) {
+                e.printStackTrace()
+            }
+        }.start()
+
+    }
+    private fun order(map: MutableMap<String, MutableList<MutableList<String>>>) {
         var good:Int=0
         var moderate:Int=0
         var bad:Int=0
@@ -94,6 +142,18 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
         val intent = Intent(applicationContext, Lot::class.java)
         val t: LotModel = LotModel(list[position].name,list[position].s1,list[position].s2,list[position].s3,list[position].s4,list[position].quality)
         intent.putExtra("t", t)
+        intent.putExtra("map",map)
         startActivity(intent)
          }
+
+    companion object {
+        private const val DATABASE_NAME = "PROJECT"
+        const val url =
+            "jdbc:mysql://nwarehouse.cmwq7a5jjeyz.ap-south-1.rds.amazonaws.com:3306/$DATABASE_NAME"
+        const val username = "admin"
+        const val password = "project123"
+        const val TABLE_NAME = "TEST4"
+        val map: HashMap<String,MutableList<MutableList<String>>> = hashMapOf<String,MutableList<MutableList<String>>>()
+
+    }
 }

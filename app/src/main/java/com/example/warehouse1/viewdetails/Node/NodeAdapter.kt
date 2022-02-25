@@ -21,7 +21,7 @@ class NodeAdapter(context: Context?, l: List<NodeModel>, onTabListener: OnTabLis
         return list.size
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val name = list[position].node_num
+        val name = list[position].node_id
         holder.name.text = name
         val s1 = list[position].s1.toString()
         holder.s1.text = s1
