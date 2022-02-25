@@ -35,7 +35,6 @@ tools:context=".viewdetails.ViewDetails">
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"
                 android:layout_weight="1"
-                app:egFixedBarWidth="true"
                 app:egBarWidth="20dp"
                 app:egLegendHeight="40dp"
                 android:padding="6dp"

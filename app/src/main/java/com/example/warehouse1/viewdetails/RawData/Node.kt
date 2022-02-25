@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
 import com.example.warehouse1.viewdetails.Node.NodeModel
-import com.loopj.android.http.AsyncHttpClient.log
 
 class Node : AppCompatActivity() {
     val list = mutableListOf<RawModel>()
