@@ -16,13 +16,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         findViewById<Button>(R.id.login).setOnClickListener{
-            if (findViewById<EditText>(R.id.username).text.trim().toString()=="admin" && findViewById<EditText>(R.id.password).text.trim().toString()=="admin")
+            if (findViewById<EditText>(R.id.username).text.trim().toString()=="1" && findViewById<EditText>(R.id.password).text.trim().toString()=="1")
             {
-                Toast.makeText(this,"Logging in!!",Toast.LENGTH_LONG).show()
+                Toast.makeText(this,"Logging in!!",Toast.LENGTH_SHORT).show()
                 val intent = Intent(applicationContext, Dashboard::class.java)
                 startActivity(intent)
             }else{
-                    Toast.makeText(this,"Wrong credentials !! , Try again ",Toast.LENGTH_LONG).show()
+                    Toast.makeText(this,"Wrong credentials !! , Try again ",Toast.LENGTH_SHORT).show()
             }
         }
     }

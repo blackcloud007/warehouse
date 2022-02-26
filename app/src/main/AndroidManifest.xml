@@ -14,6 +14,7 @@
         android:theme="@style/Theme.Warehouse1">
         <activity
             android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -23,16 +24,20 @@
         </activity>
         <activity
             android:name=".viewdetails.RawData.Node"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".viewdetails.Node.Lot"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".dashboard.Dashboard"
+            android:screenOrientation="portrait"
             android:exported="false"
            >
         </activity>
-        <activity android:name=".viewdetails.ViewDetails" />
+        <activity android:name=".viewdetails.ViewDetails"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

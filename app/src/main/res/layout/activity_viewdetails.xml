@@ -39,16 +39,32 @@ tools:context=".viewdetails.ViewDetails">
                 app:egLegendHeight="40dp"
                 android:padding="6dp"
                 />
-
-
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginStart="5dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right">
+                    <ImageButton
+                        android:id="@+id/bt_refresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_refresh_24"
+                        />
+                </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="30dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -123,6 +139,7 @@ tools:context=".viewdetails.ViewDetails">
                         android:text="Bad" />
 
                 </LinearLayout>
+            </LinearLayout>
             </LinearLayout>
 
         </LinearLayout>
