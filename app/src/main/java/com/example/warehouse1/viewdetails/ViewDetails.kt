@@ -1,14 +1,18 @@
 package com.example.warehouse1.viewdetails
+
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.AsyncTask
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
@@ -50,6 +54,59 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
             getDataFromServer().execute()
         }
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // below line is to get our inflater
+        val inflater = menuInflater
+
+        // inside inflater we are inflating our menu file.
+        inflater.inflate(R.menu.search_menu, menu)
+
+        // below line is to get our menu item.
+        val searchItem: MenuItem = menu.findItem(R.id.actionSearch)
+
+        // getting search view of our item.
+        val searchView: SearchView = searchItem.getActionView() as SearchView
+
+        // below line is to call set on query text listener method.
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                // inside on query text change method we are
+                // calling a method to filter our recycler view.
+                filter(newText)
+                return false
+            }
+        })
+        return true
+    }
+
+    private fun filter(text: String) {
+        // creating a new array list to filter our data.
+        val filteredlist: ArrayList<LotModel> = ArrayList()
+
+        // running a for loop to compare elements.
+        for (item in list) {
+            // checking if the entered string matched with any item of our recycler view.
+            if (item.name.toLowerCase().contains(text.toLowerCase())) {
+                // if the item is matched we are
+                // adding it to our filtered list.
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            // if no item is added in filtered list we are
+            // displaying a toast message as no data found.
+            Toast.makeText(this, "No Lot Found..", Toast.LENGTH_SHORT).show()
+        } else {
+            // at last we are passing that filtered
+            // list to our adapter class.
+            adapter?.filterList(filteredlist)
+        }
+    }
+
 
     internal inner class getDataFromServer(): AsyncTask<Void,Void, HashMap<String, MutableList<MutableList<String>>>>() {
         lateinit var progressDialog: ProgressDialog

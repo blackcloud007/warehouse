@@ -49,6 +49,11 @@ tools:context=".viewdetails.ViewDetails">
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Refresh:"/>
                     <ImageButton
                         android:id="@+id/bt_refresh"
                         android:layout_width="wrap_content"

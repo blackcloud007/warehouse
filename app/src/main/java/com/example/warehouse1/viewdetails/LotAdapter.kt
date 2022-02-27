@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.warehouse1.R
+import java.util.ArrayList
 
 class LotAdapter(context: Context?, l: List<LotModel>, onTabListener: OnTabListener) : RecyclerView.Adapter<LotAdapter.ViewHolder>() {
     var inflator: LayoutInflater = LayoutInflater.from(context)
@@ -34,6 +35,11 @@ class LotAdapter(context: Context?, l: List<LotModel>, onTabListener: OnTabListe
 
     override fun getItemCount(): Int {
         return list.size
+    }
+
+    fun filterList(filteredlist: ArrayList<LotModel>) {
+        list = filteredlist
+        notifyDataSetChanged()
     }
 
     inner class ViewHolder(itemView: View, onTabListener: OnTabListener) :

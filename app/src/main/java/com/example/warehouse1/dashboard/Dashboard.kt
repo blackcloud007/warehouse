@@ -26,17 +26,13 @@ class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
     }
 
     private fun getdata() {
-        myLists!!.add(DashBoardModel(R.drawable.viewdetails))
-        myLists!!.add(DashBoardModel(R.drawable.setting))
-        myLists!!.add(DashBoardModel(R.drawable.support))
-        myLists!!.add(DashBoardModel(R.drawable.profile))
-        myLists!!.add(DashBoardModel(R.drawable.logout))
-        myLists!!.add(DashBoardModel(R.drawable.feedback))
-        myLists!!.add(DashBoardModel(R.drawable.setting))
-        myLists!!.add(DashBoardModel(R.drawable.support))
-        myLists!!.add(DashBoardModel(R.drawable.profile))
-        myLists!!.add(DashBoardModel(R.drawable.logout))
-        myLists!!.add(DashBoardModel(R.drawable.feedback))
+        myLists!!.add(DashBoardModel(R.drawable.viewdetails,"View Details"))
+        myLists!!.add(DashBoardModel(R.drawable.profile,"Profile"))
+        myLists!!.add(DashBoardModel(R.drawable.code_android_logo,"About"))
+        myLists!!.add(DashBoardModel(R.drawable.support,"Support"))
+        myLists!!.add(DashBoardModel(R.drawable.feedback,"Feedback"))
+        myLists!!.add(DashBoardModel(R.drawable.logout,"Logout"))
+        myLists!!.add(DashBoardModel(R.drawable.setting,"Settings"))
         adapter = DashBoardAdapter(myLists!!, this, onTabListener = this)
         rv!!.adapter = adapter
     }
@@ -46,13 +42,11 @@ class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
             R.drawable.viewdetails -> {
                 startActivity(Intent(applicationContext, ViewDetails::class.java))
             }
-            R.drawable.setting -> {
-                Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
-            }
             R.drawable.logout -> {
                 Toast.makeText(this,"Logging out!!",Toast.LENGTH_SHORT).show()
                 finish()
             }
+            else -> Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
         }
     }
 }

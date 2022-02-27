@@ -14,7 +14,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         findViewById<Button>(R.id.login).setOnClickListener{
             if (findViewById<EditText>(R.id.username).text.trim().toString()=="1" && findViewById<EditText>(R.id.password).text.trim().toString()=="1")
             {
