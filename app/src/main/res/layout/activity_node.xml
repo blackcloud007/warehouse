@@ -6,4 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".viewdetails.RawData.Node">
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>

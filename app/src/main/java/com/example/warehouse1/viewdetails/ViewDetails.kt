@@ -19,6 +19,7 @@ import com.example.warehouse1.R
 import com.example.warehouse1.viewdetails.Node.Lot
 import com.example.warehouse1.viewdetails.Node.NodeModel
 import com.loopj.android.http.AsyncHttpClient
+import com.loopj.android.http.AsyncHttpClient.log
 import jxl.Sheet
 import jxl.Workbook
 import org.eazegraph.lib.charts.BarChart
@@ -175,15 +176,25 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
     }
     private fun order(map: MutableMap<String, MutableList<MutableList<String>>>) {
         var good:Int=0
-        var moderate:Int=0
-        var bad:Int=0
+        var degraded:Int=0
+        var start_to_degrade:Int=0
+        var average:Int=0
+        var s1:Int=0
+        var s2:Int=0
+        var s3:Int=0
+        var s4:Int=0
+        var quality:String="NULL"
         try{
-            var s1:Int=0
-            var s2:Int=0
-            var s3:Int=0
-            var s4:Int=0
-            var quality:String="NULL"
             for(i in map.keys){
+                s1=0
+                s2=0
+                s3=0
+                s4=0
+                good=0
+                start_to_degrade=0
+                average=0
+                degraded=0
+                quality="NULL"
                 var t=1
                 for(j in map[i]!!){
                     s1+=(j[0].toInt()-s1)/t
@@ -192,20 +203,20 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
                     s4+=(j[3].toInt()-s4)/t
                     t+=1
                     when (j[4].trim()){
-                        "Good" ->good+=1
-                        "Not Good" ->moderate+=1
-                        "Bad" -> bad+=1
+                        "Good" -> good += 1
+                        "Degraded" -> degraded += 1
+                        "Start to degrade" ->start_to_degrade+=1
+                        "Average" -> average += 1
                     }
                 }
-                if(good>moderate ){
-                    quality = if(good>bad)
-                        "Good"
-                    else
-                        "Bad"
-                }
-                else if(moderate>bad)
-                    quality="Moderate"
-
+                if(good>average && good>start_to_degrade && good >degraded)
+                    quality="Good"
+                else if(average>start_to_degrade && average>degraded)
+                    quality="Average"
+                else if(start_to_degrade>degraded)
+                    quality="Start to degrade"
+                else
+                    quality="Degraded"
                 listNode.add(NodeModel(i, s1, s2, s3, s4, quality))
             }
                 s1=0
@@ -214,8 +225,8 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
                 s4=0
                 quality="NULL"
                 good=0
-                bad=0
-                moderate=0
+                average=0
+                degraded=0
                 var t=1
                 for(node in listNode){
                     s1+=(node.s1-s1)/t
@@ -224,33 +235,33 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
                     s4+=(node.s4.toInt()-s4)/t
                     t+=1
                     when (node.quality.trim()){
-                        "Good" ->good+=1
-                        "Not Good" ->moderate+=1
-                        "Bad" -> bad+=1
+                        "Good" -> good += 1
+                        "Degraded" -> degraded += 1
+                        "Start to degrade" ->start_to_degrade+=1
+                        "Average" -> average += 1
                     }
                 }
-                if(good>moderate ){
-                    quality = if(good>=bad)
-                        "Good"
-                    else
-                        "Bad"
-                }
-                else if(moderate>=bad)
-                    quality="Moderate"
+            if(good>average && good>start_to_degrade && good >degraded)
+                quality="Good"
+            else if(average>start_to_degrade && average>degraded)
+                quality="Average"
+            else if(start_to_degrade>degraded)
+                quality="Start to degrade"
+            else
+                quality="Degraded"
             list.add(LotModel("Lot A",s1,s2,s3,s4,quality))
                 } catch(e:Exception){e.printStackTrace()
         }
         try{
+            good=1
+            average=0
+            degraded=0
+            start_to_degrade=0
             val ii:InputStream  = assets.open("Lots.xls")
-
             val w :Workbook= Workbook.getWorkbook(ii)
             val s:Sheet=w.getSheet(0)
             val row: Int =s.rows
-            when(list[0].quality){
-                "Good" -> good += 1
-                "Moderate" -> moderate += 1
-                "Bad" -> bad += 1
-            }
+            setData(5,2,2,1, lotcout = row)
             for(i in 0 until row){
                     val name =s.getCell(0,i).contents.toString()
                     val s1:Int=s.getCell(1,i).contents.toInt()
@@ -261,20 +272,20 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
                     list.add(LotModel(name,s1,s2,s3,s4,quality))
                     when(s.getCell(5,i).contents){
                         "Good" -> good += 1
-                        "Moderate" -> moderate += 1
-                        "Bad" -> bad += 1
+                        "Degraded" -> degraded += 1
+                        "Start to degrade" ->start_to_degrade+=1
+                        "Average" -> average += 1
                     }
             }
-            setData(good,moderate,bad, lotcout = row)
 
         }catch(e:Exception){e.printStackTrace()
 
            }
 
     }
-    private fun setData(good:Int,moderate:Int, bad:Int,lotcout:Int) {
+    private fun setData(good:Int,Avg:Int, st:Int,deg:Int,lotcout:Int) {
         // Set the data and color to the pie chart
-        findViewById<TextView>(R.id.lotcount).text = (lotcout+1).toString()
+        findViewById<TextView>(R.id.lotcount).text = (lotcout).toString()
        barChart.clearChart()
         barChart.addBar(
             BarModel(
@@ -283,12 +294,12 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
             )
         )
         barChart.addBar(
-            BarModel(moderate.toFloat(),
+            BarModel(Avg.toFloat(),
                 Color.parseColor("#2196F3")
             )
         )
         barChart.addBar(
-            BarModel(bad.toFloat(),
+            BarModel(deg.toFloat(),
                 Color.parseColor("#F44336")
             )
         )

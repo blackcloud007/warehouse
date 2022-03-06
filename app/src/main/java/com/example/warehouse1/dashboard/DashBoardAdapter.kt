@@ -1,5 +1,6 @@
 package com.example.warehouse1.dashboard
 
+import android.annotation.SuppressLint
 import android.content.Context
 import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class DashBoardAdapter(private val myListList: List<DashBoardModel>, private val
         return ViewHolder(view, onTabListener)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val img = myListList[position]
         holder.imageView.setImageDrawable(ct.resources.getDrawable(img.img))

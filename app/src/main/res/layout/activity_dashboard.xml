@@ -62,19 +62,4 @@
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.bottomappbar.BottomAppBar        android:id="@+id/bottomappbar"
-        android:layout_width="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_height="50dp"
-        app:backgroundTint="@color/colorAccent"
-
-        />
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_outline_add_circle_outline_24"
-        app:backgroundTint="@color/colorPrimary"
-        app:layout_anchor="@+id/bottomappbar"/>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -17,15 +17,21 @@
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/profile.xml" value="0.15" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/settings.xml" value="0.1965" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/drawable/viewdetails.xml" value="0.2115" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_about.xml" value="0.1507563901930099" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_login.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_lot.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_main1.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_node.xml" value="0.16458333333333333" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_profile.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_show.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_temperature.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/activity_viewdetails.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/card_dashboard_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/card_lot_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/card_node_layout.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/card_temperature_layout.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/card_view.xml" value="0.18854166666666666" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/custom_layout.xml" value="0.22" />
         <entry key="..\:/Users/ADMIN/AndroidStudioProjects/Warehouse1/app/src/main/res/layout/dashboard_layout.xml" value="0.1" />

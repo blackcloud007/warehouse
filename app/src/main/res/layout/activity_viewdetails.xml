@@ -121,7 +121,7 @@ tools:context=".viewdetails.ViewDetails">
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Moderate" />
+                        android:text="Average" />
 
                 </LinearLayout>
 
@@ -141,7 +141,7 @@ tools:context=".viewdetails.ViewDetails">
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:text="Bad" />
+                        android:text="Degraded" />
 
                 </LinearLayout>
             </LinearLayout>
