@@ -1,8 +1,10 @@
 package com.example.warehouse1.viewdetails.Node
 import android.content.Intent
 import android.os.Bundle
+import android.widget.GridLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
@@ -24,11 +26,11 @@ class Lot : AppCompatActivity(), NodeAdapter.OnTabListener {
         order(t,map)
 
         adapter= NodeAdapter(this,list,this)
-        rv.layoutManager= LinearLayoutManager(this)
+        rv.layoutManager= GridLayoutManager(this,2)
         rv.adapter=adapter
     }
     private fun order(t: LotModel, map: HashMap<String, MutableList<MutableList<String>>>){
-        findViewById<TextView>(R.id.tv_nodelot_name).text = t.name
+        findViewById<TextView>(R.id.tv_nodelot_name).text = "Lot:${t.name}"
         findViewById<TextView>(R.id.tv_node_avg_Q).text=t.quality
         findViewById<TextView>(R.id.tv_node_avgs1).text=t.s1.toString()
         findViewById<TextView>(R.id.tv_node_avgs2).text=t.s2.toString()

@@ -13,8 +13,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.ekn.gruzer.gaugelibrary.HalfGauge
+import com.ekn.gruzer.gaugelibrary.Range
 import com.example.warehouse1.R
 import com.example.warehouse1.viewdetails.Node.Lot
 import com.example.warehouse1.viewdetails.Node.NodeModel
@@ -128,7 +131,7 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
             if (result != null) {
                 order(result)
                 adapter= LotAdapter(context,list,this@ViewDetails)
-                rv.layoutManager= LinearLayoutManager(context)
+                rv.layoutManager= GridLayoutManager(context,3)
                 rv.adapter=adapter
             }
             else
@@ -249,7 +252,7 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
                 quality="Start to degrade"
             else
                 quality="Degraded"
-            list.add(LotModel("Lot A",s1,s2,s3,s4,quality))
+            list.add(LotModel("A",s1,s2,s3,s4,quality))
                 } catch(e:Exception){e.printStackTrace()
         }
         try{
@@ -261,7 +264,7 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
             val w :Workbook= Workbook.getWorkbook(ii)
             val s:Sheet=w.getSheet(0)
             val row: Int =s.rows
-            setData(5,2,2,1, lotcout = row)
+            setData(4,1,2,1, lotcout = row)
             for(i in 0 until row){
                     val name =s.getCell(0,i).contents.toString()
                     val s1:Int=s.getCell(1,i).contents.toInt()
@@ -299,12 +302,52 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
             )
         )
         barChart.addBar(
+            BarModel(
+                st.toFloat(),
+                Color.parseColor("#FFEB3B")
+            )
+        )
+        barChart.addBar(
             BarModel(deg.toFloat(),
                 Color.parseColor("#F44336")
             )
         )
 
         barChart.startAnimation()
+        val halfGauge=findViewById<HalfGauge>(R.id.halfGauge)
+        val halfGauge1=findViewById<HalfGauge>(R.id.halfGauge1)
+        val range = Range()
+        range.color = Color.parseColor("#ce0000")
+        range.from = 0.0
+        range.to = 50.0
+
+        val range2 = Range()
+        range2.color = Color.parseColor("#E3E500")
+        range2.from = 50.0
+        range2.to = 100.0
+
+        val range3 = Range()
+        range3.color = Color.parseColor("#00b20b")
+        range3.from = 100.0
+        range3.to = 150.0
+
+        //add color ranges to gauge
+        halfGauge.addRange(range)
+        halfGauge.addRange(range2)
+        halfGauge.addRange(range3)
+
+        //set min max and current value
+        halfGauge.minValue = 0.0
+        halfGauge.maxValue = 150.0
+        halfGauge.value = 140.0
+        halfGauge1.addRange(range)
+        halfGauge1.addRange(range2)
+        halfGauge1.addRange(range3)
+
+        //set min max and current value
+        halfGauge1.minValue = 0.0
+        halfGauge1.maxValue = 150.0
+        halfGauge1.value = 100.0
     }
     override fun onClick(position: Int) {
 

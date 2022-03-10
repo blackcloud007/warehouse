@@ -13,6 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse1">
         <activity
+            android:name=".Registration"
+            android:exported="false" />
+        <activity
+            android:name=".SelectWarehouse"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".profile.Profile"
             android:exported="false" />
         <activity
@@ -23,15 +35,9 @@
             android:exported="false" />
         <activity
             android:name=".login.LoginActivity"
-            android:exported="true"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".viewdetails.RawData.Node"
             android:exported="false"
@@ -44,7 +50,7 @@
             android:name=".dashboard.Dashboard"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
         <activity
             android:name=".viewdetails.ViewDetails"
             android:screenOrientation="portrait" />

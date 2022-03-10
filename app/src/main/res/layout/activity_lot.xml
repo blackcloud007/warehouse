@@ -16,7 +16,7 @@
         android:layout_marginTop="15dp"
         android:hint="Lot Num"
         android:textColor="@color/black"
-        android:textSize="35sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.057"
@@ -51,8 +51,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
+
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
+            android:visibility="gone"
             android:layout_marginBottom="10dp">
 
             <TextView
@@ -67,6 +69,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
+                android:visibility="gone"
                 android:fontFamily="sans-serif-light"
                 android:text="0"
                 android:textAlignment="textEnd"
@@ -78,6 +81,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
@@ -109,6 +113,7 @@
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
+            android:visibility="gone"
             android:layout_marginBottom="10dp">
 
             <TextView
@@ -136,6 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="10dp"
+            android:visibility="gone"
             android:layout_marginRight="25dp"
             android:layout_marginBottom="10dp">
 

@@ -1,11 +1,13 @@
 package com.example.warehouse1.viewdetails
 
 import android.content.Context
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.example.warehouse1.R
 import java.util.ArrayList
 
@@ -31,6 +33,12 @@ class LotAdapter(context: Context?, l: List<LotModel>, onTabListener: OnTabListe
         holder.s4.text = s4
         val quality = list[position].quality
         holder.quality.text = quality
+        when(quality){
+            "Good" ->  holder.card_view.setCardBackgroundColor(Color.GREEN)
+            "Degraded" -> holder.card_view.setCardBackgroundColor(Color.RED)
+            "Start to degrade" ->holder.card_view.setCardBackgroundColor(Color.YELLOW)
+            "Average" ->holder.card_view.setCardBackgroundColor(Color.BLUE)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -46,6 +54,7 @@ class LotAdapter(context: Context?, l: List<LotModel>, onTabListener: OnTabListe
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var name: TextView = itemView.findViewById(R.id.tv_name)
         var s1: TextView = itemView.findViewById(R.id.tv1)
+        var card_view=itemView.findViewById<CardView>(R.id.card_view)
         var s2:TextView=itemView.findViewById(R.id.tv2)
         var s3: TextView = itemView.findViewById(R.id.tv3)
         var s4: TextView = itemView.findViewById(R.id.tv4)

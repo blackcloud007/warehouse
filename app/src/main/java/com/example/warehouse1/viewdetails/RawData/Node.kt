@@ -3,6 +3,7 @@ package com.example.warehouse1.viewdetails.RawData
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
@@ -22,7 +23,7 @@ class Node : AppCompatActivity() {
 
         order(t,map)
             adapter= RawAdapter(this,list)
-            rv.layoutManager= LinearLayoutManager(this)
+            rv.layoutManager= GridLayoutManager(this,2)
             rv.adapter=adapter
         }
         private fun order(t: NodeModel, map: HashMap<String, MutableList<MutableList<String>>>){
