@@ -13,16 +13,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse1">
         <activity
-            android:name=".Registration"
-            android:exported="false" />
-        <activity
-            android:name=".SelectWarehouse"
-            android:exported="true">
+            android:name=".login.LoginActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".Register.Registration"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".SelectWarehouse"
+            android:exported="false">
         </activity>
         <activity
             android:name=".profile.Profile"
@@ -34,7 +40,7 @@
             android:name=".temperature.Temperature"
             android:exported="false" />
         <activity
-            android:name=".login.LoginActivity"
+            android:name=".login.LoginActivity1"
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
@@ -50,7 +56,7 @@
             android:name=".dashboard.Dashboard"
             android:exported="false"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"></activity>
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".viewdetails.ViewDetails"
             android:screenOrientation="portrait" />
