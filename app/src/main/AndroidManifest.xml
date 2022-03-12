@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".amplify.MyAmplifyApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,9 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehouse1">
         <activity
+            android:name=".Register.ConfirmSignUp"
+            android:exported="false" />
+        <activity
             android:name=".login.LoginActivity"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            android:exported="true" >
+            android:exported="true"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,12 +28,11 @@
         </activity>
         <activity
             android:name=".Register.Registration"
-            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
             android:name=".SelectWarehouse"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".profile.Profile"
             android:exported="false" />

@@ -37,6 +37,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/emailError"
                     android:layout_width="match_parent"
+                    android:visibility="gone"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp">
 
@@ -47,6 +48,25 @@
                         android:layout_marginTop="10dp"
                         android:hint="@string/prompt_email"
                         android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="5dp"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/usernameError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
+
+                    <EditText
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:hint="User name"
+                        android:inputType="text"
                         android:maxLines="1"
                         android:paddingStart="5dp"
                         android:singleLine="true" />

@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-warehouse1-dev-112024-authRole",
+      "UnauthRoleArn": "arn:aws:iam::403120942972:role/amplify-warehouse1-dev-112024-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::403120942972:role/amplify-warehouse1-dev-112024-authRole",
+      "Region": "ap-southeast-2",
+      "DeploymentBucketName": "amplify-warehouse1-dev-112024-deployment",
+      "UnauthRoleName": "amplify-warehouse1-dev-112024-unauthRole",
+      "StackName": "amplify-warehouse1-dev-112024",
+      "StackId": "arn:aws:cloudformation:ap-southeast-2:403120942972:stack/amplify-warehouse1-dev-112024/54af2ba0-a1c8-11ec-b016-02e30391bb74",
+      "AmplifyAppId": "drysdcdj472o7"
+    },
+    "categories": {
+      "auth": {
+        "warehouse1e8d1beed": {}
+      }
+    }
+  }
+}

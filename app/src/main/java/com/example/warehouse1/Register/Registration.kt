@@ -2,6 +2,7 @@ package com.example.warehouse1.Register
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Button
@@ -9,6 +10,9 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.amplifyframework.auth.AuthUserAttributeKey
+import com.amplifyframework.auth.options.AuthSignUpOptions
+import com.amplifyframework.core.Amplify
 import com.example.warehouse1.R
 import com.example.warehouse1.login.LoginActivity
 import com.google.android.material.textfield.TextInputLayout
@@ -93,8 +97,20 @@ class Registration : AppCompatActivity() {
             passError!!.isErrorEnabled = false
         }
        // if (isNameValid && isEmailValid && isPhoneValid && isPasswordValid) {
-            Toast.makeText(applicationContext, "Successfully Regstered", Toast.LENGTH_SHORT).show()
-            finish()
+        val options = AuthSignUpOptions.builder()
+            .userAttribute(AuthUserAttributeKey.email(), email!!.text.toString().trim())
+            .build()
+        Amplify.Auth.signUp(
+            name!!.text.toString().trim(), password!!.text.toString().trim(), options,
+            { Log.i("AuthQuickStart", "Sign up succeeded: $it")
+                runOnUiThread{Toast.makeText(applicationContext, "Successfully Regstered", Toast.LENGTH_SHORT).show()}
+                val intent = Intent(applicationContext, ConfirmSignUp::class.java)
+                intent.putExtra("username", name!!.text.toString().trim())
+                startActivity(intent)
+                finish()
+            },
+            { Log.e ("AuthQuickStart", "Sign up failed", it) }
+        )
        // }
     }
 }
