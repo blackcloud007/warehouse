@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.warehouse1.R
-import com.example.warehouse1.about.About
-import com.example.warehouse1.profile.Profile
+import com.example.warehouse1.warehouseprofile.WarehouseProfile
 import com.example.warehouse1.temperature.Temperature
-import com.example.warehouse1.viewdetails.ViewDetails
+import com.example.warehouse1.viewdetails.Warehouse
+import com.google.android.material.appbar.AppBarLayout
 
 
 class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
@@ -21,7 +21,11 @@ class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
-        rv = findViewById<View>(R.id.rec) as RecyclerView
+        val mToolbar:androidx.appcompat.widget.Toolbar =findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+        val mAppBarLayout : AppBarLayout = findViewById(R.id.appBar);
+
+    rv = findViewById<View>(R.id.rec) as RecyclerView
         rv!!.setHasFixedSize(true)
         rv!!.layoutManager = GridLayoutManager(this, 2)
         myLists = ArrayList()
@@ -29,11 +33,11 @@ class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
     }
 
     private fun getdata() {
-        myLists!!.add(DashBoardModel(R.drawable.viewdetails,"View Details"))
-        myLists!!.add(DashBoardModel(R.drawable.profile,"Profile"))
-        myLists!!.add(DashBoardModel(R.drawable.code_android_logo,"About"))
+        myLists!!.add(DashBoardModel(R.drawable.warehouse,"Warehouse"))
+        myLists!!.add(DashBoardModel(R.drawable.profile,"Warehouse Profile"))
+        myLists!!.add(DashBoardModel(R.drawable.viewdetails,"Detailed Report"))
         myLists!!.add(DashBoardModel(R.drawable.temp,"Temperature and Humidity"))
-        myLists!!.add(DashBoardModel(R.drawable.logout,"Logout"))
+        myLists!!.add(DashBoardModel(R.drawable.logout,"Exit"))
 
         adapter = DashBoardAdapter(myLists!!, this, onTabListener = this)
         rv!!.adapter = adapter
@@ -41,18 +45,17 @@ class Dashboard : AppCompatActivity(), DashBoardAdapter.OnTabListener {
 
     override fun onClick(position: Int) {
         when(myLists!![position].img){
-            R.drawable.viewdetails -> {
-                startActivity(Intent(applicationContext, ViewDetails::class.java))
+            R.drawable.warehouse -> {
+                startActivity(Intent(applicationContext, Warehouse::class.java))
             }
             R.drawable.temp ->{
                 startActivity(Intent(applicationContext,Temperature::class.java))
             }
             R.drawable.logout -> {
-                Toast.makeText(this,"Logging out!!",Toast.LENGTH_SHORT).show()
                 finish()
             }
-            R.drawable.code_android_logo->startActivity(Intent(applicationContext, About::class.java))
-            R.drawable.profile->startActivity(Intent(applicationContext, Profile::class.java))
+            R.drawable.profile->startActivity(Intent(applicationContext, WarehouseProfile::class.java))
+            R.drawable.viewdetails->Intent(applicationContext, Warehouse::class.java)
 
             else -> Toast.makeText(this,"Coming Soon",Toast.LENGTH_SHORT).show()
         }

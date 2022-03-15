@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="User Profile"
+            android:id="@+id/userProfile"/>
+        <item android:title="Select Warehouse"
+            android:id="@+id/firstFragment"/>
+        <item
+            android:title="Notification"
+            android:id="@+id/notificationFragment"/>
+        <item android:title="About"
+            android:id="@+id/secFragment"/>
+
+        <item android:title="Logout"/>
+    </group>
+</menu>

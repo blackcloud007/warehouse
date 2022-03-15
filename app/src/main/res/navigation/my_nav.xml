@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.warehouse1.fragments.SelectWarehouseID"
+        android:label="Select Warehouse"
+        tools:layout="@layout/fragment_first" />
+    <fragment
+        android:id="@+id/secFragment"
+        android:name="com.example.warehouse1.fragments.About"
+        android:label="About"
+        tools:layout="@layout/fragment_sec">
+        <argument
+            android:name="num"
+            android:defaultValue="1" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfile"
+        android:name="com.example.warehouse1.fragments.UserProfile"
+        android:label="USER PROFILE"
+        tools:layout="@layout/fragment_user_profile" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.warehouse1.fragments.Notification"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_notification" />
+</navigation>

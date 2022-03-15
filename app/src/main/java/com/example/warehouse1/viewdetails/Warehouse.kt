@@ -14,7 +14,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ekn.gruzer.gaugelibrary.HalfGauge
 import com.ekn.gruzer.gaugelibrary.Range
@@ -22,7 +21,6 @@ import com.example.warehouse1.R
 import com.example.warehouse1.viewdetails.Node.Lot
 import com.example.warehouse1.viewdetails.Node.NodeModel
 import com.loopj.android.http.AsyncHttpClient
-import com.loopj.android.http.AsyncHttpClient.log
 import jxl.Sheet
 import jxl.Workbook
 import org.eazegraph.lib.charts.BarChart
@@ -33,7 +31,7 @@ import java.sql.ResultSet
 import java.sql.SQLException
 
 
-class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
+class Warehouse : AppCompatActivity(), LotAdapter.OnTabListener  {
     lateinit var context: Context
     private lateinit var barChart: BarChart
     private lateinit var rv:RecyclerView
@@ -130,7 +128,7 @@ class ViewDetails : AppCompatActivity(), LotAdapter.OnTabListener  {
             progressDialog.dismiss()
             if (result != null) {
                 order(result)
-                adapter= LotAdapter(context,list,this@ViewDetails)
+                adapter= LotAdapter(context,list,this@Warehouse)
                 rv.layoutManager= GridLayoutManager(context,3)
                 rv.adapter=adapter
             }

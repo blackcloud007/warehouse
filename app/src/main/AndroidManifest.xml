@@ -34,10 +34,7 @@
             android:name=".SelectWarehouse"
             android:exported="false"></activity>
         <activity
-            android:name=".profile.Profile"
-            android:exported="false" />
-        <activity
-            android:name=".about.About"
+            android:name=".warehouseprofile.WarehouseProfile"
             android:exported="false" />
         <activity
             android:name=".temperature.Temperature"
@@ -61,7 +58,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
         <activity
-            android:name=".viewdetails.ViewDetails"
+            android:name=".viewdetails.Warehouse"
             android:screenOrientation="portrait" />
     </application>
 
